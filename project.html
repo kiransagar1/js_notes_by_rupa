@@ -1,0 +1,209 @@
+<html>
+<head>
+  <title>Interactive Calculator</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: wheat;
+      margin: 0;
+    }
+
+    .calculator {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #display {
+      width: 100%;
+      height: 60px;
+      font-size: 2.5em;
+      text-align: right;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 20px;
+      font-size: 1.5em;
+      cursor: pointer;
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.1s;
+    }
+
+    button:hover {
+      background-color: #e0e0e0;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .operator {
+      background-color: #ff9500;
+      color: white;
+    }
+
+    .operator:hover {
+      background-color: #ff7f00;
+    }
+
+    .equal {
+      background-color: #4caf50;
+      color: white;
+      grid-column: span 2;
+    }
+
+    .clear {
+      background-color: #f44336;
+      color: white;
+      grid-column: span 2;
+    }
+
+    .decimal {
+      background-color: #2196f3;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+
+    <div class="buttons">
+      <!-- Row 1 -->
+      <button onclick="appendNumber(7)">7</button>
+      <button onclick="appendNumber(8)">8</button>
+      <button onclick="appendNumber(9)">9</button>
+      <button class="operator" onclick="appendOperator('/')">/</button>
+
+      <!-- Row 2 -->
+      <button onclick="appendNumber(4)">4</button>
+      <button onclick="appendNumber(5)">5</button>
+      <button onclick="appendNumber(6)">6</button>
+      <button class="operator" onclick="appendOperator('*')">*</button>
+
+      <!-- Row 3 -->
+      <button onclick="appendNumber(1)">1</button>
+      <button onclick="appendNumber(2)">2</button>
+      <button onclick="appendNumber(3)">3</button>
+      <button class="operator" onclick="appendOperator('-')">-</button>
+
+      <!-- Row 4 -->
+      <button onclick="appendNumber(0)">0</button>
+      <button class="decimal" onclick="appendDecimal()">.</button>
+      <button class="equal" onclick="calculateResult()">=</button>
+      <button class="operator" onclick="appendOperator('+')">+</button>
+
+      <!-- Clear Button -->
+      <button class="clear" onclick="clearDisplay()">C</button>
+    </div>
+  </div>
+
+  <script>
+    let currentInput = '';
+    let previousInput = '';
+    let operator = '';
+    let lastOperator = '';
+
+    function appendNumber(number) {
+      currentInput += number.toString();
+      updateDisplay(currentInput);
+    }
+
+    function appendOperator(op) {
+      if (currentInput === '') return;
+      if (previousInput !== '') {
+        calculateResult();
+      }
+      operator = op;
+      previousInput = currentInput;
+      currentInput = '';
+    }
+
+    function appendDecimal() {
+      if (!currentInput.includes('.')) {
+        currentInput += '.';
+        updateDisplay(currentInput);
+      }
+    }
+
+    function calculateResult() {
+      let result;
+      const prev = parseFloat(previousInput);
+      const current = parseFloat(currentInput);
+
+      if (isNaN(prev) || isNaN(current)) return;
+
+      switch (operator) {
+        case '+':
+          result = prev + current;
+          break;
+        case '-':
+          result = prev - current;
+          break;
+        case '*':
+          result = prev * current;
+          break;
+        case '/':
+          if (current === 0) {
+            alert("Cannot divide by zero!");
+            clearDisplay();
+            return;
+          }
+          result = prev / current;
+          break;
+        default:
+          return;
+      }
+
+      currentInput = result.toString();
+      operator = '';
+      previousInput = '';
+      updateDisplay(currentInput);
+    }
+
+    function clearDisplay() {
+      currentInput = '';
+      previousInput = '';
+      operator = '';
+      updateDisplay('');
+    }
+
+    function updateDisplay(value) {
+      document.getElementById('display').value = value;
+    }
+  </script>
+
+</body>
+</html>

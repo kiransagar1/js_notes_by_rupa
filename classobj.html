@@ -1,0 +1,88 @@
+<html>
+<head>
+    <title>Car Class Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px 0;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Create a Car</h2>
+
+    <label for="brand">Brand:</label>
+    <input type="text" id="brand" placeholder="Enter car brand">
+
+    <label for="model">Model:</label>
+    <input type="text" id="model" placeholder="Enter car model">
+
+    <label for="color">Color:</label>
+    <input type="text" id="color" placeholder="Enter car color">
+
+    <button onclick="createCar()">Create Car</button>
+    <button onclick="startCar()">Start Car</button>
+    <button onclick="stopCar()">Stop Car</button>
+
+    <h3>Car Details:</h3>
+    <p id="carDetails"></p>
+    <p id="carStatus"></p>
+
+    <script>
+        class Car {
+            constructor(brand, model, color) {
+                this.brand = brand;
+                this.model = model;
+                this.color = color;
+            }
+
+            start() {
+                return `${this.brand} ${this.model} is starting...`;
+            }
+
+            stop() {
+                return `${this.brand} ${this.model} has stopped.`;
+            }
+        }
+
+        let myCar; // Variable to store the created car object
+
+        function createCar() {
+            const brand = document.getElementById("brand").value;
+            const model = document.getElementById("model").value;
+            const color = document.getElementById("color").value;
+
+            if (brand && model && color) {
+                myCar = new Car(brand, model, color);
+                document.getElementById("carDetails").textContent = 
+                    `Car Created: ${myCar.color} ${myCar.brand} ${myCar.model}`;
+                document.getElementById("carStatus").textContent = "";
+            } else {
+                alert("Please enter all car details!");
+            }
+        }
+
+        function startCar() {
+            if (myCar) {
+                document.getElementById("carStatus").textContent = myCar.start();
+            } else {
+                alert("Please create a car first!");
+            }
+        }
+
+        function stopCar() {
+            if (myCar) {
+                document.getElementById("carStatus").textContent = myCar.stop();
+            } else {
+                alert("Please create a car first!");
+            }
+        }
+    </script>
+
+</body>
+</html>

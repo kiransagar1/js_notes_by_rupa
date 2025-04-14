@@ -1,0 +1,55 @@
+<!--<html>
+<head>
+    <title>Conditional Statements</title>
+    <script>
+        function checkDay() {
+            let day = document.getElementById("day").value.toLowerCase();
+            let message = "";
+            
+            if (day === "monday") {
+                message = "Start of the work week!";
+            } else if (day === "friday") {
+                message = "Almost the weekend!";
+            } else if (day === "sunday") {
+                message = "Enjoy your rest day!";
+            } else {
+                message = "It's just another day!";
+            }
+            
+            document.getElementById("result").innerHTML = message;
+        }
+    </script>
+</head>
+<body>
+    <h2>Enter a Day of the Week</h2>
+    <input type="text" id="day" placeholder="Enter a day">
+    <button onclick="checkDay()">Check Day</button>
+    <p id="result"></p>
+</body>
+</html>--->
+
+
+
+
+<html>
+<head>
+    <title>Age Check</title>
+    <script>
+        function checkAge() {
+            let age = document.getElementById("age").value; // Get the value from the input
+            if (age >= 18) {
+                document.getElementById("result").innerHTML = "You are an adult!";
+            } else {
+                document.getElementById("result").innerHTML = "You are a minor!";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Enter Your Age</h2>
+    <input type="number" id="age" placeholder="Enter your age">
+    <button onclick="checkAge()">Submit</button>
+    <p id="result"></p>
+</body>
+</html>
+

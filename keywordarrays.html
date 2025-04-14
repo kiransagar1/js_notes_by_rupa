@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h1> arrays</h1>
+        <button onclick="myfunction()">try it</button>
+        <p id ="demo"></p>
+        <script>
+            let movies=["court","colorphoto","paperboy","nani"];
+            document.getElementById("demo").innerHTML=movies;
+            function myfunction() {
+                movies.push("dhukudu");
+                document.getElementById("demo").innerHTML=movies;
+            }
+        </script>
+    </body>
+</html>

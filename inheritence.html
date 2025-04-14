@@ -1,0 +1,53 @@
+ <html>
+<head>
+    <title>JavaScript Inheritance Example</title>
+</head>
+<body>
+    <h1>JavaScript Inheritance Example</h1>
+    <div id="output"></div>
+
+    <script>
+        // Base class
+        class Animal {
+            constructor(name) {
+                this.name = name;
+            }
+
+            speak() {
+                return `${this.name} makes a sound.`;
+            }
+        }
+
+        // Derived class
+        class Dog extends Animal {
+            constructor(name, breed) {
+                // Call the parent class constructor
+                super(name);
+                this.breed = breed;
+            }
+
+            // Overriding the speak method
+            speak() {
+                return `${this.name} barks!`;
+            }
+
+            // New method specific to Dog
+            fetch() {
+                return `${this.name} is fetching the ball.`;
+            }
+        }
+
+        // Creating an instance of Dog
+        const myDog = new Dog("Rex", "Golden Retriever");
+
+        // Displaying information in HTML
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = `
+            <p><strong>Name:</strong> ${myDog.name}</p>
+            <p><strong>Breed:</strong> ${myDog.breed}</p>
+            <p><strong>Speak:</strong> ${myDog.speak()}</p>
+            <p><strong>Fetch:</strong> ${myDog.fetch()}</p>
+        `;
+    </script>
+</body>
+</html>

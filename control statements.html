@@ -1,0 +1,25 @@
+<html>
+    <head>control statements
+    <title>conditional statements</title>
+    <script>
+        function checkage(){
+            let age=promt("please enter your age:");
+            age =number(age);
+            if (isNaN(age)){
+                alert("please enter a valid number of age.");
+            }else{
+                if(age>=18){
+                    alert("your are an adult.");
+                }else{
+                    alert("you are a minor.");
+                }
+                }
+            }
+        
+    </script>
+    </head>
+    <body>
+        <h1>welcome to age check</h1>
+<button onclick="checkage()">check</button>
+ </body>
+</html>

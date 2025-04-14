@@ -1,0 +1,58 @@
+
+<html>
+<head>
+    <title>Small Example: break, continue, return</title>
+</head>
+<body>
+    <h1>Example: break, continue, and return</h1>
+    <p id="output"></p>
+
+    <script>
+        // break example
+        function breakExample() {
+            let result = '';
+            for (let i = 0;i < 5; i++) {
+                if (i === 4) {
+                    result += "Break: Stopped at i = " + i + "<br>";
+                    break;  // Exits the loop when i is 3
+                }
+                result += "i = " + i + "<br>";
+            }
+            return result;
+        }
+
+        // continue example
+        function continueExample() {
+            let result = '';
+            for (let i = 0; i < 5; i++) {
+                if (i === 3) {
+                    result += "Continue: Skipped i = " + i + "<br>";
+                    continue;  // Skips the iteration when i is 3
+                }
+                result += "i = " + i + "<br>";
+            }
+            return result;
+        }
+
+        // return example
+        function returnExample() {
+            for (let i = 0; i < 5; i++) {
+                if (i === 3) {
+                    return "Return: Stopped at i = " + i;  // Exits function when i is 3
+                }
+            }
+            return "Finished the loop without hitting return";
+        }
+
+        // Combine all results in the output
+        let output = '';
+        output += breakExample();
+        output += '<br>';
+        output += continueExample();
+        output += '<br>';
+        output += returnExample();
+
+        document.getElementById("output").innerHTML = output;
+    </script>
+</body>
+</html>

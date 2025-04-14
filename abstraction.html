@@ -1,0 +1,73 @@
+ <html>
+<head>
+    <title>Abstraction in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .car-info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Abstraction Example: Car</h2>
+
+<button onclick="startCar()">Start the Car</button>
+<button onclick="stopCar()">Stop the Car</button>
+
+<div class="car-info">
+    <p id="status">Car status: Off</p>
+</div>
+
+<script>
+    // Car object with abstraction
+    function Car(make, model) {
+        this.make = make;
+        this.model = model;
+        this.isRunning = false;
+
+        // Public methods to start and stop the car
+        this.start = function() {
+            if (!this.isRunning) {
+                console.log(`${this.make} ${this.model} is starting...`);
+                this.isRunning = true;
+            } else {
+                console.log(`${this.make} ${this.model} is already running.`);
+            }
+        };
+
+        this.stop = function() {
+            if (this.isRunning) {
+                console.log(`${this.make} ${this.model} is stopping...`);
+                this.isRunning = false;
+            } else {
+                console.log(`${this.make} ${this.model} is already off.`);
+            }
+        };
+
+        // Method to get the status of the car
+        this.getStatus = function() {
+            return this.isRunning ? "Running" : "Off";
+        };
+    }
+
+    // Creating a new car object
+    const myCar = new Car('Toyota', 'Corolla');
+
+    // Function to start the car
+    function startCar() {
+        myCar.start();
+        document.getElementById('status').innerText = `Car status: ${myCar.getStatus()}`;
+    }
+
+    // Function to stop the car
+    function stopCar() {
+        myCar.stop();
+        document.getElementById('status').innerText = `Car status: ${myCar.getStatus()}`;
+    }
+</script>
+
+</body>
+</html>

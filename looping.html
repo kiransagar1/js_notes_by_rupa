@@ -1,0 +1,67 @@
+<!--<htmhtmll>
+<head>
+  <title>Looping Examples</title>
+</head>
+<body>
+
+  <h1>Looping Examples: for, while, and do-while</h1>
+
+  <h2>1. For Loop</h2>
+  <ul id="forLoopList"></ul>
+
+  <h2>2. While Loop</h2>
+  <ul id="whileLoopList"></ul>
+
+  <h2>3. Do-While Loop</h2>
+  <ul id="doWhileLoopList"></ul>
+
+  <script>
+    // 1. For Loop
+    const forLoopList = document.getElementById("forLoopList");
+    for (let i = 1; i <= 5; i++) {
+      const li = document.createElement("li");
+      li.textContent = "For Loop: " + i;
+      forLoopList.appendChild(li);
+    }
+
+    // 2. While Loop
+    const whileLoopList = document.getElementById("whileLoopList");
+    let count = 1;
+    while (count <= 15) {
+      const li = document.createElement("li");
+      li.textContent = "While Loop: " + count;
+      whileLoopList.appendChild(li);
+      count++;
+    }
+
+    // 3. Do-While Loop
+    const doWhileLoopList = document.getElementById("doWhileLoopList");
+    let doCount = 1;
+    do {
+      const li = document.createElement("li");
+      li.textContent = "rupa: " + doCount;
+      doWhileLoopList.appendChild(li);
+      doCount++;
+    } while (doCount <= 5);
+  </script>
+
+</body>
+</html>--->
+
+<>
+  <body>
+    <p id="demo">
+    </p>
+    <script>
+      let cars=["r","m","u"];
+      let text="";
+     for (let i=0; i < cars.lenght;i++){
+      text +=cars[i]+"<br>"
+
+      }
+      document.getElementById("demo").innerHTML=text;
+    </script>
+  </body>
+</html>
+
+

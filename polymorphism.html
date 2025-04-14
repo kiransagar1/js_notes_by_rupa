@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>JavaScript Polymorphism Example</title>
+</head>
+<body>
+    <h1>JavaScript Polymorphism Example</h1>
+    <div id="output"></div>
+
+    <script>
+        // Base class (Parent class)
+        class Animal {
+            constructor(name) {
+                this.name = name;
+            }
+
+            speak() {
+                return `${this.name} makes a sound.`;
+            }
+        }
+
+        // Derived class (Child class) - Polymorphism in action
+        class Dog extends Animal {
+            constructor(name) {
+                super(name);
+            }
+
+            // Overriding the speak method
+            speak() {
+                return `${this.name} barks.`;
+            }
+        }
+
+        // Another derived class - Polymorphism in action
+        class Cat extends Animal {
+            constructor(name) {
+                super(name);
+            }
+
+            // Overriding the speak method
+            speak() {
+                return `${this.name} meows.`;
+            }
+        }
+
+        // Function that uses polymorphism
+        function makeSound(animal) {
+            return animal.speak();
+        }
+
+        // Create instances of different animal types
+        const dog = new Dog('Buddy');
+        const cat = new Cat('Whiskers');
+
+        // Displaying the output of polymorphism
+        document.getElementById('output').innerHTML = `
+            <p>${makeSound(dog)}</p>
+            <p>${makeSound(cat)}</p>
+        `;
+    </script>
+</body>
+</html>
